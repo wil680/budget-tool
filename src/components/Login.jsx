@@ -1,5 +1,8 @@
 import { login } from '../lib/auth.js';
 import { useNavigate } from 'react-router-dom'; 
+import { Link } from 'react-router-dom';
+
+
 
 function Login(){
     const navigate = useNavigate();
@@ -9,21 +12,21 @@ function Login(){
         if(ok) 
             navigate('/dashboard', {replace:true});
     }
-    return <form onSubmit={handleSubmit}>
+    return <div className='card p-4 m-4'>
+    <form onSubmit={handleSubmit}>
+    <h1 className='fs-4 mb-4 text-center'>Sign In</h1>    
     <div className="mb-3">
-        <label for="exampleInputEmail1" className="form-label">Email address</label>
-        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email Address"/>
     </div>
     <div className="mb-3">
-        <label for="exampleInputPassword1" className="form-label">Password</label>
-        <input type="password" className="form-control" id="exampleInputPassword1"/>
+        <input type="password" className="form-control mb-5" id="exampleInputPassword1" placeholder="Password"/>
     </div>
-    <div className="mb-3 form-check">
-        <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
-        <label className="form-check-label" for="exampleCheck1">Check me out</label>
+    <div className="mb-3">
+        <button type="submit" className="btn btn-primary">Login</button>
     </div>
-    <button type="submit" className="btn btn-primary">Submit</button>
+    <Link className="nav-link" to='/signup'> Signup</Link>
     </form>
+    </div>
 }
 
 export default Login;
